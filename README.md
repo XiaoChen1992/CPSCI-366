@@ -1,36 +1,29 @@
-# 2024 Fall CPSCI-307
-
-This is the home page for Hamilton College CPSCI-307: Deep Learning. Be sure to ***READ THIS PAGE CAREFULLY!!!***
+# 2025 Fall CPSCI-366
 
 ## Lecture Details
 
-**Lecture time**: Monday and Wednesday 2:30 PM - 3:45 PM 
+**Lecture time**: Tuesday and Thursday 1:00 PM - 2:15 PM
 
-**Location**: Christian A. Johnson Hall (CJ) 305.
+**Location**: Taylor Science Center, 3040 LEC
 
 **Office Hours**: 
 
-1. Monday 1:15 PM - 2:15 PM
+1. Tuesday 10:00 AM - Noon
 
-2. Tuesday 10:00 AM - 11:00 AM 
+2. Thursday 2:15 PM - 4:15 PM
 
-3. Wednesday 1:15 PM - 2:15 PM
+3. or by appointment via email. 
 
-4. Friday 11:00 AM - noon 
-
-5. or by appointment via email. 
-
-You can meet me at my office (SCCT 2016) or via Zoom. 
+You can meet me at my office (SCCT 2016) or via Zoom (if necessary). 
 
 **Email**: schen3@hamilton.edu
 
 **Gradescope**: https://www.gradescope.com Entry Code: 8KXJGY
 
-**Edstem**: [Ed Discussion](https://edstem.org/us/courses/61325/discussion/)
 
 ## Course Description
 
-This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework PyTorch.
+This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is heavy-math and code instance and project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework.
 
 ## Learning Objectives
 
@@ -44,12 +37,13 @@ After this class, you should be able to:
 
 1. Convert a real-life or research question into a computer science problem
 2. Build a deep learning pipeline to solve the problem
-3. Correctly evaluate your deep learning model's performance
+3. Correctly evaluate and improve your deep learning model's performance
 
 ## Prerequisites
 
 1. This class heavily relies on Python. You should be comfortable using Python for programming or be familiar with other programming languages and able to learn and use Python quickly.
-2. Be familiar with the basic linear algebra (vector, matrix, matrix operations, ...) is required.
+2. Be familiar with the basic linear algebra and calculus is required.
+3. Background in statistics is desried but not required. (We will cover the necessary part in class)
 
 ## Course Materials
 
@@ -59,34 +53,14 @@ After this class, you should be able to:
 
 **Recommended**: [Deep Learning](https://www.deeplearningbook.org/)
 
-### Environment Setup
+### GPU Setup
+Every four studetns will be assigned one Linux machine with GeForce RTX 5070 TI gpu for assighment and final project. **If you require more computation power, you could purchase some online services (This is not required).**
 
-We will use [PyTorch](https://pytorch.org/get-started/locally/) (version: Stable 2.3.1) for all assignments and projects. This class requires a GPU for deep learning model training. You need to prepare your own GPU for the class. Usually, an NVIDIA GPU is the default for training. However, you can also choose AMD or Apple M chips for training, although they may bring some unexpected errors that you will need to debug yourself.
-
-If you do not have a GPU, some online platforms can be considered. Here are some GPU notebook options:
-
-1. Google Colab (default for this class)
-2. Amazon SageMaker
-3. Kaggle GPU
-
-You will need a GPU for assignment 2, assignment 3, and final project.
-
-I also provided enviroment.yml file, you can use it by:
-```shell
-conda env create --name cpsci307 -f environment.yml
-```
-
-### Fee
-
-Colab provides free GPU resources (with very limited GPU hours), but you also can pay for more resources. You can sign up for a paid account at [Google Colab](https://colab.research.google.com/signup). 
-
-If you have any financial difficulties in purchasing GPU services, **TALK TO ME**.
 
 ### Laptops and Electronics
+You should not use a labtop, phone or any similar device during lectures. If you take notes on a tablet, then you should not be typing on it during class, but only writing (e.g. with a stylus) unless you require accommodation for a disability. Tablets should be kept flat on the desk and should not be propped up unless you require accommodation for a disability. If you would like to discuss this restriction, you are always welcome to come talk to me about it.
 
-You should bring a laptop to lectures as we will live code in every class. If you are unable to do this, let me know. You should not use a phone or any similar device during lectures. If you take notes on a tablet, then you should not be typing on it during class, but only writing (e.g. with a stylus) unless you require accommodation for a disability. Tablets should be kept flat on the desk and should not be propped up unless you require accommodation for a disability. If you would like to discuss this restriction, you are always welcome to come talk to me about it.
-
-During most lectures, we will have mini-labs (live coding). **You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. For example, I found twice that if you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example: If your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
+**You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. For example, I found twice that if you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example: If your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
 
 ## Academic Integrity & Collaboration
 
@@ -104,25 +78,26 @@ You are **NOT** allowed to use any generative AI tools (online or offline) for y
 
 You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** to provide your prompt history to me, **otherwise you will lose 5%** of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5. Here is a prompt history [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/prompt_history_example.pdf).
 
+
 **THIS POLICY APPLIES ONLY TO THIS CLASS!!!** For other classes, follow the academic integrity policy of that class or ask your professor.
 
 ## Grading
 
 Your final score will be comprised of the following weighted components:
 
-1. **Assignments (30%)**: Three assignments, each assignment contributes 10% of your final score. The assignments' goal is to let you build, train, and test different types of neural networks by PyTorch.
+1. **Assignments (40%)**: Three assignments, each assignment contributes 10% of your final score. The assignments' goal is to let you build, train, and test different types of neural networks by PyTorch.
 
-2. **Midterm (10%)**: One midterm exam (close book) at Week 7. The exam's goal is to ensure you understand the basic concepts of machine/deep learning.  
+2. **Midterm (20%)**: Two midterm exams (close book).
 
-3. **Final Project (60%)**: The final project covers:
+3. **Final Project (40%)**: The final project covers:
    
-   1. Proposal (10%): Create a plan for the final project, up to 2 pages ([IEEE - Manuscript Templates for Conference Proceedings](https://www.ieee.org/conferences/publishing/templates.html))  
+   1. Proposal (0%): Create a plan for the final project, up to 1 pages ([IEEE - Manuscript Templates for Conference Proceedings](https://www.ieee.org/conferences/publishing/templates.html))  
    
    2. Data (10%): Report how you collected your own data for the final project. Include the following parts: a. Where is the data source? b. How did you collect the data? c. How did you preprocess the data? The report is up to 1 page (IEEE format). You also need to provide some data examples to me.
    
-   3. Code (15%): Upload your project's code to the gradescope. Your code should be well-organized and easy to read. Check this [example](https://github.com/XiaoChen1992/CPSCI-307/tree/main/project_example) to organize your code. If you do not follow the example's style, you will lose 5% of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5.
+   3. Code (10%): Upload your project's code to the gradescope. Your code should be well-organized and easy to read. Check this [example](https://github.com/XiaoChen1992/CPSCI-307/tree/main/project_example) to organize your code. If you do not follow the example's style, you will lose 5% of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5.
    
-   4. Performance (15%):
+   4. Performance (10%):
       
       1. I should be able to directly run your `inference.py` file in the terminal to use your model. For example:
          
@@ -134,21 +109,21 @@ Your final score will be comprised of the following weighted components:
       
       3. Your model's performance should be evaluated by suitable metrics and achieve reasonable performance.
          
-         1. The learning curve should show your model was learning, with no obvious overfitting or underfitting pattern.
+         1. The learning curve should show your model was learning, with no obvious overfitting, underfitting pattern or other issues.
          
          2. The model's test data does not have a leaking issue. 
    
-   5. Poster (10%): We plan to have a department-wide poster presentation. The poster should cover the following parts:
-      
-      1. Introduction of the question
-      2. Details of the deep learning model's design
-      3. Results and analysis
-      4. Conclusion and future work
+   5. Presentation and report(10%): The report is up to 4 pages (IEEE format). A good presentation and report should cover the following parts:
+         1. Introduction
+         2. Method and matrerials
+         3. Experiment and results
+         4. Colution
 
-4. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. For example, if your final score is 90, but you missed three classes, then your final score is 85.5.  Check section **Attendance and Late Policy** for more details.
+You need to attend your final presentation **on time**, otherwise, you will loose whole final project's credits.
 
-Your final score will be a weighted sum of all three parts. For example, Assignments: 89, exam: 80, and final project: 95, then the final score is 91.7.
-Your final score will convert to a letter grade by following the table:
+4. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. For example, if your final score is 90, but you missed three classes, then your final score is 85.5. **Four unexcused absences will fail you to this class.** Check section **Attendance and Late Policy** for more details. 
+
+Your final score will be a weighted sum of all three parts. The final score will convert to a letter grade by following the table:
 
 | Score | Letter Grade |
 | ----- | ------------ |
@@ -169,15 +144,13 @@ Your final score will convert to a letter grade by following the table:
 
 ### Attendance
 
-You are expected to attend every class. You may be excused only for college-sanctioned activities, and you must let me know about such absences as soon as you are notified. This includes missing class for religious, athletic, or academic conflicts. If you are sick or have an important appointment at the health or counseling center, please email me before the class and take care of yourself. If you must miss a class for a college-sanctioned activity, you must notify me prior to the class in question via email.
+You are expected to attend every class. You may be excused only for college-sanctioned activities, and you must let me know about such absences as soon as you are notified. This includes missing class for religious, athletic, or academic conflicts. If you are sick or have an important appointment at the health or counseling center, please email me **before** the class and take care of yourself. If you must miss a class for a college-sanctioned activity, you must notify me prior to the class in question via email.
 
 ### Late Work
 
 No late work will be accepted without prior permission. If you contact me at least one work day before the due date (unless faced with an emergency) with appropriate requests for an extension and/or makeup assignments, you will be given additional time to make up late assignments equal to the time lost due to unforeseen circumstances.
 
 **Any unexcused late ness (within 24 hours) will result 10% score deduction for the assignment. For example, your assignment's score is 89, because of the late, the score will drop to $$89 \times 0.9 = 80.1$$. If you submit your assignment late more than 24 hours, I will not accept it, the score will be 0.**
-
-You cannot re-do assignments for a better score.
 
 ## Seeking Help
 
