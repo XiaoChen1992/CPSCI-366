@@ -23,7 +23,7 @@ You can meet me at my office (SCCT 2016) or via Zoom (if necessary).
 
 ## Course Description
 
-This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is heavy-math and code instance and project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework.
+This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is heavy-math, code instance and project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework.
 
 ## Learning Objectives
 
