@@ -60,26 +60,23 @@ Every four studetns will be assigned one Linux machine with GeForce RTX 5070 TI 
 ### Laptops and Electronics
 You should not use a labtop, phone or any similar device during lectures. If you take notes on a tablet, then you should not be typing on it during class, but only writing (e.g. with a stylus) unless you require accommodation for a disability. Tablets should be kept flat on the desk and should not be propped up unless you require accommodation for a disability. If you would like to discuss this restriction, you are always welcome to come talk to me about it.
 
-**You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. For example, I found twice that if you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example: If your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
+**You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. If I found twice that if you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example, if your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
 
 ## Academic Integrity & Collaboration
 
 You should work on all assignments by yourself. You can discuss your assignments with me, your classmates, your friends, or other professors, but you are **NOT** allowed to use others' code.
 
-You can work on the final project on your own or team up with up to 3 students. If you choose to work in a team, your team must report each member's contribution. I encourage all team members to join the entire project pipeline as much as possible, instead of each team member only being in charge of one part of the project. Here is an [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/contrbution.md). You should include this file in your own project, otherwise, all team members will lose 5% of the project score. For example, if your final project's score is 90, because of a missing file, the score will drop to 85.5.
+You can work on the final project on your own or team up with up to 4 students. If you choose to work in a team, your team must report each member's contribution. I encourage all team members to join the entire project pipeline as much as possible, instead of each team member only being in charge of one part of the project. Here is an [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/contrbution.md). You should include this file in your own project, otherwise, all team members will lose 5% of the project score. For example, if your final project's score is 90, because of a missing file, the score will drop to 85.5.
 
 ### AI Policy
 
 ### Assignments
 
-You are **NOT** allowed to use any generative AI tools (online or offline) for your assignments. Any code from generative AI tools (online or offline) will be considered cheating and you will receive 0 points for the assignments.
+You are **NOT** allowed to use any generative AI tools (online or offline) for your assignments. Any code from generative AI tools (online or offline) will be considered cheating and you will receive 0 points for the assignments and report it to College.
 
 ### Final Project
 
 You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** to provide your prompt history to me, **otherwise you will lose 5%** of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5. Here is a prompt history [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/prompt_history_example.pdf).
-
-
-**THIS POLICY APPLIES ONLY TO THIS CLASS!!!** For other classes, follow the academic integrity policy of that class or ask your professor.
 
 ## Grading
 
@@ -93,7 +90,7 @@ Your final score will be comprised of the following weighted components:
    
    1. Proposal (0%): Create a plan for the final project, up to 1 pages ([IEEE - Manuscript Templates for Conference Proceedings](https://www.ieee.org/conferences/publishing/templates.html))  
    
-   2. Data (10%): Report how you collected your own data for the final project. Include the following parts: a. Where is the data source? b. How did you collect the data? c. How did you preprocess the data? The report is up to 1 page (IEEE format). You also need to provide some data examples to me.
+   2. Data (10%): Report how you collected your own data for the final project. Include the following parts: a. Where is the data source? b. How did you collect the data? c. How did you preprocess the data? The report is up to 2 page (IEEE format). You also need to provide some data examples to me.
    
    3. Code (10%): Upload your project's code to the gradescope. Your code should be well-organized and easy to read. Check this [example](https://github.com/XiaoChen1992/CPSCI-307/tree/main/project_example) to organize your code. If you do not follow the example's style, you will lose 5% of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5.
    
@@ -119,9 +116,9 @@ Your final score will be comprised of the following weighted components:
          3. Experiment and results
          4. Colution
 
-You need to attend your final presentation **on time**, otherwise, you will loose whole final project's credits.
+You need to attend your final presentation **on time**, otherwise, you get 0 as your final project score.
 
-4. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. For example, if your final score is 90, but you missed three classes, then your final score is 85.5. **Four unexcused absences will fail you to this class.** Check section **Attendance and Late Policy** for more details. 
+4. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. **Four unexcused absences will fail you to this class. Also I will report it to College.** Check section **Attendance and Late Policy** for more details. 
 
 Your final score will be a weighted sum of all three parts. The final score will convert to a letter grade by following the table:
 
@@ -156,7 +153,7 @@ No late work will be accepted without prior permission. If you contact me at lea
 
 ### Accommodations
 
-If you believe you may need accommodation for a disability, contact me privately within the first two weeks (2024-10-09) of the semester to discuss your specific needs. If you have not already done so, please contact Allen Harrison, Assistant Dean of Students for International Students and Accessibility, at 315-859-4021, or via email at aharriso@hamilton.edu. He is responsible for determining reasonable and appropriate accommodations for students with disabilities on a case-by-case basis. 
+If you believe you may need accommodation for a disability, contact me privately within the first two weeks (2025-09-12) of the semester to discuss your specific needs. If you have not already done so, please contact Allen Harrison, Assistant Dean of Students for International Students and Accessibility, at 315-859-4021, or via email at aharriso@hamilton.edu. He is responsible for determining reasonable and appropriate accommodations for students with disabilities on a case-by-case basis. 
 
 ### Mental Health and Wellness
 
