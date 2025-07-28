@@ -82,9 +82,9 @@ You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** 
 
 Your final score will be comprised of the following weighted components:
 
-1. **Assignments (40%)**: Three assignments, each assignment contributes 10% of your final score. The assignments' goal is to let you build, train, and test different types of neural networks by PyTorch.
+1. **Assignments (30%)**: Three assignments, each assignment contributes 10% of your final score. The assignments' goal is to let you build, train, and test different types of neural networks by PyTorch.
 
-2. **Midterm (20%)**: Two midterm exams (close book).
+2. **Midterm (15%)**: Two midterm exams (close book).
 
 3. **Final Project (40%)**: The final project covers:
    
