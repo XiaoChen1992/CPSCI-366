@@ -1,86 +1,189 @@
-# Assignment 1: House Prices Prediction using Deep MLP
+# 🧠 Assignment 1: Deep Learning for Tabular Data — Mobile Price Classification
 
-**Due Date:** September 30, 2024, at 2:30 PM
+## 📌 Overview
 
-For this assignment, you will build a deep Multi-Layer Perceptron (MLP) model to predict house prices. The assignment is based on the Kaggle dataset **"House Prices: Advanced Regression Techniques"**, which contains 79 explanatory variables describing various attributes of residential homes in Ames, Iowa. The target variable is the sale price of the house.
+In this assignment, you will build a **Multi-Layer Perceptron (MLP)** to predict the price range of mobile phones based on their hardware specifications. You will work with a structured dataset containing various phone features such as RAM, battery power, screen size, and more.
 
-The assignment consists of two parts:
-
-1. **First Stage Model:** Build your own deep MLP model using the PyTorch library without copying code from others or the internet. You can use google to debug and check PyTorch documentation.
-2. **Second Stage Model:** Explore Kaggle kernels or other public code to see how others have built their deep MLP models for house price prediction. Incorporate at least two techniques from others to improve your own model. Note that some public solutions are machine learning-based, and some are deep learning-based; therefore, some techniques may not directly apply to your deep learning model.
+Your goal is to **train and evaluate a deep learning model using only the `train.csv` data**, and to explore preprocessing techniques, model training strategies, and performance evaluation using suitable metrics.
 
 ---
 
-## Data
+## 📂 Dataset
 
-You can download the dataset from Kaggle at: [House Prices: Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques). To download the data, you need to sign up for a Kaggle account and join the competition.
-
-After downloading and extracting the `.zip` file, you will find:
-
-- **`train.csv`** - The training set.
-- **`test.csv`** - The test set.
-- **`data_description.txt`** - Full description of each column, originally prepared by Dean De Cock but lightly edited to match the column names used here.
-- **`sample_submission.csv`** - A benchmark submission from a linear regression on year and month of sale, lot square footage, and number of bedrooms.
-
-**Important:** You are only allowed to use `train.csv` to build your training and validation sets. Use `test.csv` solely to evaluate your model's performance on the test set.
-
-An example code demonstrating how to build a custom dataset in PyTorch is provided here: [[create_dataset.py](https://github.com/XiaoChen1992/CPSCI-307/blob/main/notebooks/create_dataset.py)](https://github.com/XiaoChen1992/CPSCI-307/blob/main/notebooks/create_dateset.py). Use this code as a reference to build your dataset for house price prediction. If you have any questions, feel free to ask.
+- Source: [Mobile Price Classification on Kaggle](https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification)
+- Files:
+  - `train.csv`: 2000 samples with 20 features + `price_range` label (0–3)
+  - `test.csv`: 1000 samples, same features, no labels (used only for final ranking)
+- Target variable: `price_range` (0: low cost, 1: medium cost, 2: high cost, 3: very high cost)
 
 ---
 
-## First Stage Model
+## Rules
 
-In this stage, you need to use the concepts learned in class to build a deep MLP model for house price prediction. After training your model, you should test it on the test set and report its performance.
+- **DO NOT use `test.csv` for training, validation, feature selection, or scaling**.
+- Only use `train.csv` during development.
+- We will evaluate your model using `test.csv` and rank performance separately.
+- You may consult Kaggle notebooks and blogs to explore ideas, but you **must cite all external resources**.
 
-### Requirements:
+---
 
-1. **Model Design:** Describe how you designed your model. Include details such as:
-   - Types of layers used.
-   - Number of layers.
-   - Activation functions.
-   - Any other relevant architectural choices.
-2. **Learning Curve:** Provide a plot showing the training and validation loss over epochs. Use different colors to distinguish between training and validation loss.
-3. **Performance Metrics:** Report the Mean Squared Error (MSE) and Mean Absolute Error (MAE) on the test set.
+## Tasks
 
-### Submission:
+### 1. Understand the Dataset
+- Read the feature descriptions on Kaggle.
+- Explore relationships between features and the target variable.
+- Perform basic EDA (distribution plots, correlations, etc.).
 
-- **Report:** Compile your answers to requirements 1–3 into a PDF document named `yourname_stage_1.pdf`.
-- **Code:** Organize your code following this example: [Project Example](https://github.com/XiaoChen1992/CPSCI-307/tree/main/project_example). You do not need to include `contribution.md` and `prompt_history_example.pdf`, as this is a personal project and you are not allowed to use any AI language models. Note that, I should directly run your infernce_stage_1.py as follows:
+### 2. Preprocess the Data
+- Normalize or standardize features.
+- You may engineer new features or apply dimensionality reduction.
+- Use only `train.csv` for all preprocessing steps.
 
+### 3. Build an MLP Model
+- Implement a feedforward neural network using PyTorch.
+- Use at least 2 hidden layers and ReLU activation.
+- Output layer must have 4 units and use softmax (via `CrossEntropyLoss`).
+- Use dropout, batch norm, and weight initialization as needed.
 
-```shell
-python inference_stage_1.py --test_path path/to/test.csv
+### 4. Train and Validate
+- Split the training data into train/validation sets (e.g., 80/20).
+- Use early stopping, learning rate scheduling, and other best practices.
+- Track training and validation accuracy and loss.
+
+### 5. Evaluation
+- Report classification accuracy.
+- Optionally include confusion matrix, F1-score, etc.
+- **Draw a learning curve**: accuracy (or loss) vs. epoch.
+
+### 6. Final Prediction
+- Include a function:
+  ```python
+  def predict(model, X_test):
+      # Applied the exacty same data preprocessing pipeline for raw X_test to get X_test
+      # returns numpy array of predicted labels
+      return model.predict(X_test)
+   ```
+
+### 7. What to Submit
+7.1. Jupyter notebook (.ipynb):
+
+* Data loading and preprocessing
+
+* MLP model code
+
+* Training and validation loop
+
+* Evaluation metrics and learning curves
+
+* Final prediction function
+
+7.2. Brief report (.pdf) summarizing:
+
+* Your model architecture and training setup
+
+* Key findings from evaluation
+
+* Any feature engineering
+
+* External resources used (with links or citations)
+
+* Trained model weights (.pt)
+
+### Grading Criteria (100 pts)
+## 🏁 Grading Criteria (100 pts)
+
+| Component                         | Points |
+|----------------------------------|--------|
+| Preprocessing & Feature Handling | 15     |
+| MLP Model Implementation         | 20     |
+| Training Strategy & Validation   | 20     |
+| Learning Curve & Metrics         | 15     |
+| Code Clarity & Reproducibility   | 10     |
+| Report & Citations               | 10     |
+| Generalization to Test Set       | 10     |
+
+```python
+"""
+NOTE: This is example code to show you how to orgnize the project. This code does not contain feature propressing.
+"""
+import pandas as pd
+import numpy as np
+import torch
+from torch import nn
+from torch.utils.data import Dataset, DataLoader
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# 1. Load data
+def load_data(path):
+    df = pd.read_csv(path)
+    return df
+# TODO: Procress df here.
+
+# 2. Dataset class
+class MobilePriceDataset(Dataset):
+    def __init__(self, X, y):
+        self.X = torch.tensor(X.values, dtype=torch.float32)
+        self.y = torch.tensor(y.values, dtype=torch.long)
+
+    def __len__(self):
+        return len(self.X)
+
+    def __getitem__(self, idx):
+        return self.X[idx], self.y[idx]
+
+# 3. MLP model
+class MLPClassifier(nn.Module):
+   # TODO: Here I built a very simple MLP, you may want to build your own model.
+
+    def __init__(self, input_dim, hidden_dims=[64, 32], output_dim=4):
+        super(MLPClassifier, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(input_dim, hidden_dims[0]),
+            nn.ReLU(),
+            nn.Linear(hidden_dims[0], hidden_dims[1]),
+            nn.ReLU(),
+            nn.Linear(hidden_dims[1], output_dim)
+        )
+
+    def forward(self, x):
+        return self.model(x)
+
+# 4. Placeholder for main training pipeline
+def main():
+    # Load training data
+    df = load_data("train.csv")
+
+    # Split features and labels
+    X = df.drop("price_range", axis=1)
+    y = df["price_range"]
+
+    # Preprocessing (e.g., scaling) — add later
+    scaler = StandardScaler()  # TODO: You need to read sklearn document. 
+    # https://scikit-learn.org/stable/data_transforms.html
+    X_scaled = scaler.fit_transform(X)
+    X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
+
+    # Train/val split
+    X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+
+    # Prepare datasets and loaders
+    train_dataset = MobilePriceDataset(X_train, y_train)
+    val_dataset = MobilePriceDataset(X_val, y_val)
+
+    train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=64, shuffle=False)
+
+    # Define model
+    model = MLPClassifier(input_dim=X.shape[1])
+
+    # Move model to device
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+
+    # TODO: Add training loop, validation, evaluation, learning curve, etc.
+
+if __name__ == "__main__":
+    main()
+    # TODO: save model's weights (.pt)
 ```
----
-
-## Second Stage Model
-
-In this stage, you are encouraged to use techniques from others to improve your model. You can find other people's code at the [Kaggle competition code page](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/code). Select at least **two techniques** from these resources and attempt to incorporate them into your model. Actual improvement is not mandatory; the objective is to experiment with and report on these techniques.
-
-### Requirements:
-
-1. **Techniques Used:** Describe the techniques you selected and cite their sources.
-2. **Improvement Analysis:** Discuss whether you achieved any improvement in your model's performance. If yes, quantify the improvement.
-3. **Evaluation:** Explain why you think these techniques worked or did not work for house price prediction.
-4. **Learning Curve:** Provide a plot showing the training and validation loss over epochs, similar to the first stage.
-5. **Performance Metrics:** Report your kaggle result (screenshot is fine) to me.
-
-### Submission:
-
-- **Report:** Compile your answers to requirements 1–5 into a PDF document named `yourname_stage_2.pdf`.
-- **Code:** You do not need to create a new folder. Instead, provide code files with different names, such as `stage_1_train.py` and `stage_2_train.py`.
-
----
-
-## Submission Details
-
-- **Due Date:** September 30, 2024, at 2:30 PM.
-- **Submission Platform:** Submit your code and reports via Gradescope.
-
----
-
-**Note:** Ensure that your code is well-documented and follows good coding practices. Remember, plagiarism is strictly prohibited. Any form of code copying without proper citation will result in severe penalties.
-
-If you have any questions or need clarification on the assignment, please feel free to reach out.
-
-Good luck!
