@@ -63,3 +63,6 @@ calculate (A + B).
 8. **Conditional Probability**: If $P(A) = 0.5$, $P(B) = 0.6$, and $P(A \cap B) = 0.3$, find $P(A | B)$.
 
 9. **Bayesian Probability**: Given that $P(Disease) = 0.01$, $P(Positive | Disease) = 0.95$, and $P(Positive | No\, Disease) = 0.05$, use Bayes' Theorem to find $P(Disease | Positive)$.
+
+10. **Expected Value**: A fair 6-sided die is rolled. Let random variable `X` be the square of the number rolled.  
+Compute `E[X]`.
