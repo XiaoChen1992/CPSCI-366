@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 
+from torchvista import trace_model
+
 class LeNet_v1(nn.Module):
     def __init__(self, ) -> None:
         super().__init__()
@@ -74,3 +76,8 @@ if __name__ == '__main__':
     print(model1(x).shape)
     print(model2(x).shape)
     print(model3(x).shape)
+    
+    # Trace!
+    trace_model(model1, x)
+    # trace_model(model2, x)
+    # trace_model(model3, x)
