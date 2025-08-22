@@ -23,7 +23,7 @@ You can meet me at my office (SCCT 2016) or via Zoom (if necessary).
 
 ## Course Description
 
-This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is heavy-math, code instance and project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework.
+This course discusses deep learning, covering foundational machine learning principles (loss functions, bias-variance trade-off, and optimization), advanced models (Multilayer Perceptrons, Convolutional Neural Networks, Recurrent Neural Networks, and Transformers), and their applications. The course is heavy-math, code instance and project-based, emphasizing applying these techniques to real-world datasets using the deep learning framework.
 
 ## Learning Objectives
 
@@ -84,7 +84,7 @@ Your final score will be comprised of the following weighted components:
 
 1. **Assignments (30%)**: Three assignments, each assignment contributes 10% of your final score. The assignments' goal is to let you build, train, and test different types of neural networks by PyTorch.
 
-2. **Midterm (15%)**: Two midterm exams (close book).
+2. **Midterm (25%)**: Two midterm exams (close book).
 
 3. **Final Project (40%)**: The final project covers:
    
@@ -116,9 +116,11 @@ Your final score will be comprised of the following weighted components:
          3. Experiment and results
          4. Colution
 
-You need to attend your final presentation **on time**, otherwise, you get 0 as your final project score.
+      You need to attend your final presentation **on time**, otherwise, you get 0 as your final project score.
+4. **Reading(5%)**: I will ask few questions at the begining of every class, to get full credits, you need to answer three questions with reasonable answers.
 
-4. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. **Four unexcused absences will fail you to this class. Also I will report it to College.** Check section **Attendance and Late Policy** for more details. 
+5. **Participation**: If you have three unexcused absences. You will lose 5% of your final score. **Four unexcused absences will fail you to this class. Also I will report it to College.** Check section **Attendance and Late Policy** for more details. 
+
 
 Your final score will be a weighted sum of all three parts. The final score will convert to a letter grade by following the table:
 
@@ -147,7 +149,7 @@ You are expected to attend every class. You may be excused only for college-sanc
 
 No late work will be accepted without prior permission. If you contact me at least one work day before the due date (unless faced with an emergency) with appropriate requests for an extension and/or makeup assignments, you will be given additional time to make up late assignments equal to the time lost due to unforeseen circumstances.
 
-**Any unexcused late ness (within 24 hours) will result 10% score deduction for the assignment. For example, your assignment's score is 89, because of the late, the score will drop to $$89 \times 0.9 = 80.1$$. If you submit your assignment late more than 24 hours, I will not accept it, the score will be 0.**
+**Any unexcused late ness (within 24 hours) will result 10% score deduction for the assignment. For example, your assignment's score is 89, because of the late, the score will drop to $89 \times 0.9 = 80.1$. If you submit your assignment late more than 24 hours, I will not accept it, the score will be 0.**
 
 ## Seeking Help
 
