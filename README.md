@@ -66,9 +66,9 @@ You should not use a labtop, phone or any similar device during lectures. If you
 
 You should work on all assignments by yourself. You can discuss your assignments with me, your classmates, your friends, or other professors, but you are **NOT** allowed to use others' code.
 
-You can work on the final project on your own or team up with up to 4 students. If you choose to work in a team, your team must report each member's contribution. I encourage all team members to join the entire project pipeline as much as possible, instead of each team member only being in charge of one part of the project. Here is an [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/contrbution.md). You should include this file in your own project, otherwise, all team members will lose 5% of the project score. For example, if your final project's score is 90, because of a missing file, the score will drop to 85.5.
+You can work on the final project on your own or team up with up to 4 students. If you choose to work in a team, your team must report each member's contribution. I encourage all team members to join the entire project pipeline as much as possible, instead of each team member only being in charge of one part of the project. Here is an [example](https://github.com/XiaoChen1992/CPSCI-366/blob/main/project_example/contrbution.md). You should include this file in your own project, otherwise, all team members will lose 5% of the project score. For example, if your final project's score is 90, because of a missing file, the score will drop to 85.5.
 
-### AI Policy
+## AI Policy
 
 ### Assignments
 
@@ -76,7 +76,14 @@ You are **NOT** allowed to use any generative AI tools (online or offline) for y
 
 ### Final Project
 
-You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** to provide your prompt history to me, **otherwise you will lose 5%** of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5. Here is a prompt history [example](https://github.com/XiaoChen1992/CPSCI-307/blob/main/project_example/prompt_history_example.pdf).
+You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** to provide your prompt history to me, **otherwise you will lose 5%** of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5. Here is a prompt history [example](https://github.com/XiaoChen1992/CPSCI-366/blob/main/project_example/prompt_history_example.pdf).
+
+### AI tools
+Here some some free AI tools:
+1. [Google Gimini](https://www.google.com/aclk?sa=L&ai=DChsSEwiXusXju6ePAxVnS0cBHRo9IE0YACICCAEQABoCcXU&ae=2&co=1&ase=2&gclid=CjwKCAjwk7DFBhBAEiwAeYbJsQ1bJ0oL0-WtFnrZh4HjgVtbuS1x-57QgkXXHb0_3H6J6pNNORyIURoCO8sQAvD_BwE&cce=2&category=acrcp_v1_71&sig=AOD64_15cEvKAT8mbgz8ZrE2D2E9DRizNg&q&nis=4&adurl&ved=2ahUKEwizv73ju6ePAxWbKlkFHecIKNkQ0Qx6BAgKEAE), student plan (100% free)
+2. [Github Colpilot Pro](https://github.com/education/students). 100% free.
+
+I require everyone uses these two paid version AI tools for this class.
 
 ## Grading
 
@@ -92,7 +99,7 @@ Your final score will be comprised of the following weighted components:
    
    2. Data (10%): Report how you collected your own data for the final project. Include the following parts: a. Where is the data source? b. How did you collect the data? c. How did you preprocess the data? The report is up to 2 page (IEEE format). You also need to provide some data examples to me.
    
-   3. Code (10%): Upload your project's code to the gradescope. Your code should be well-organized and easy to read. Check this [example](https://github.com/XiaoChen1992/CPSCI-307/tree/main/project_example) to organize your code. If you do not follow the example's style, you will lose 5% of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5.
+   3. Code (10%): Upload your project's code to the gradescope. Your code should be well-organized and easy to read. Check this [example](https://github.com/XiaoChen1992/CPSCI-366/tree/main/project_example) to organize your code. If you do not follow the example's style, you will lose 5% of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5.
    
    4. Performance (10%):
       
