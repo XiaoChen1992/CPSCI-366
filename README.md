@@ -81,7 +81,7 @@ You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** 
 ### AI tools
 Here some some free AI tools:
 1. [Google Gimini](https://www.google.com/aclk?sa=L&ai=DChsSEwiXusXju6ePAxVnS0cBHRo9IE0YACICCAEQABoCcXU&ae=2&co=1&ase=2&gclid=CjwKCAjwk7DFBhBAEiwAeYbJsQ1bJ0oL0-WtFnrZh4HjgVtbuS1x-57QgkXXHb0_3H6J6pNNORyIURoCO8sQAvD_BwE&cce=2&category=acrcp_v1_71&sig=AOD64_15cEvKAT8mbgz8ZrE2D2E9DRizNg&q&nis=4&adurl&ved=2ahUKEwizv73ju6ePAxWbKlkFHecIKNkQ0Qx6BAgKEAE), student plan (100% free)
-2. [Github Colpilot Pro](https://github.com/education/students). 100% free.
+2. [Github Copilot Pro](https://github.com/education/students). 100% free.
 
 I require everyone uses these two paid version AI tools for this class.
 
