@@ -45,7 +45,7 @@ After this class, you should be able to:
 
 1. This class heavily relies on Python. You should be comfortable using Python for programming or be familiar with other programming languages and able to learn and use Python quickly.
 2. Be familiar with the basic linear algebra and calculus is required.
-3. Background in statistics is desried but not required. (We will cover the necessary part in class)
+3. Background in statistics is desired but not required. (We will cover the necessary part in class)
 
 ## Course Materials
 
@@ -56,13 +56,13 @@ After this class, you should be able to:
 **Recommended**: [Deep Learning](https://www.deeplearningbook.org/)
 
 ### GPU Setup
-Every four studetns will be assigned one Linux machine with GeForce RTX 5070 TI gpu for assighment and final project. **If you require more computation power, you could purchase some online services (This is not required).**
+Every four students will be assigned one Linux machine with GeForce RTX 5070 TI gpu for assignment and final project. **If you require more computation power, you could purchase some online services (This is not required).**
 
 
 ### Laptops and Electronics
-You should not use a labtop, phone or any similar device during lectures. If you take notes on a tablet, then you should not be typing on it during class, but only writing (e.g. with a stylus) unless you require accommodation for a disability. Tablets should be kept flat on the desk and should not be propped up unless you require accommodation for a disability. If you would like to discuss this restriction, you are always welcome to come talk to me about it.
+You should not use a laptop, phone or any similar device during lectures. If you take notes on a tablet, then you should not be typing on it during class, but only writing (e.g. with a stylus) unless you require accommodation for a disability. Tablets should be kept flat on the desk and should not be propped up unless you require accommodation for a disability. If you would like to discuss this restriction, you are always welcome to come talk to me about it.
 
-**You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. If I found twice that if you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example, if your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
+**You can only use your laptop  for coding at mini-lab time. You can't use the computer for anything unrelated to the course content. If I found twice that you use the computer for something unrelated (E.g.: Facebook, YouTube, game,...) to the course, you will lose 5% of your final grade.** For example, if your final score is 90, because of using the laptop for unrelated to the course content twice. Your score will drop to 85.5.
 
 ## Academic Integrity & Collaboration
 
@@ -81,7 +81,7 @@ You are **NOT** allowed to use any generative AI tools (online or offline) for y
 You are **ENCOURAGED** to use AI tools for your final project, but you **NEED** to provide your prompt history to me, **otherwise you will lose 5%** of your final project score. For example, if your final project's score is 90, because of missing prompt history, the score will drop to 85.5. Here is a prompt history [example](https://github.com/XiaoChen1992/CPSCI-366/blob/main/project_example/prompt_history_example.pdf).
 
 ### AI tools
-Here some some free AI tools:
+Here two free AI tools:
 1. [Google Gimini](https://www.google.com/aclk?sa=L&ai=DChsSEwiXusXju6ePAxVnS0cBHRo9IE0YACICCAEQABoCcXU&ae=2&co=1&ase=2&gclid=CjwKCAjwk7DFBhBAEiwAeYbJsQ1bJ0oL0-WtFnrZh4HjgVtbuS1x-57QgkXXHb0_3H6J6pNNORyIURoCO8sQAvD_BwE&cce=2&category=acrcp_v1_71&sig=AOD64_15cEvKAT8mbgz8ZrE2D2E9DRizNg&q&nis=4&adurl&ved=2ahUKEwizv73ju6ePAxWbKlkFHecIKNkQ0Qx6BAgKEAE), student plan (100% free)
 2. [Github Copilot Pro](https://github.com/education/students). 100% free.
 
@@ -123,7 +123,7 @@ Your final score will be comprised of the following weighted components:
          1. Introduction
          2. Method and matrerials
          3. Experiment and results
-         4. Colution
+         4. Conclution
 
       You need to attend your final presentation **on time**, otherwise, you get 0 as your final project score.
 4. **Reading(5%)**: I will ask few questions at the begining of every class, to get full credits, you need to answer three questions with reasonable answers.
@@ -158,7 +158,7 @@ You are expected to attend every class. You may be excused only for college-sanc
 
 No late work will be accepted without prior permission. If you contact me at least one work day before the due date (unless faced with an emergency) with appropriate requests for an extension and/or makeup assignments, you will be given additional time to make up late assignments equal to the time lost due to unforeseen circumstances.
 
-**Any unexcused late ness (within 24 hours) will result 10% score deduction for the assignment. For example, your assignment's score is 89, because of the late, the score will drop to $89 \times 0.9 = 80.1$. If you submit your assignment late more than 24 hours, I will not accept it, the score will be 0.**
+**Any unexcused lateness (within 24 hours) will result in 10% score deduction for the assignment. For example, your assignment's score is 89, because of the late, the score will drop to $89 \times 0.9 = 80.1$. If you submit your assignment late more than 24 hours, I will not accept it, the score will be 0.**
 
 ## Seeking Help
 
