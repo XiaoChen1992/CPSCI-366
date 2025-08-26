@@ -1,6 +1,6 @@
-# 🧠 Assignment 1: Deep Learning for Tabular Data — Mobile Price Classification
+# Assignment 1: Deep Learning for Tabular Data — Mobile Price Classification
 
-## 📌 Overview
+## Overview
 
 In this assignment, you will build a **Multi-Layer Perceptron (MLP)** to predict the price range of mobile phones based on their hardware specifications. You will work with a structured dataset containing various phone features such as RAM, battery power, screen size, and more.
 
@@ -8,7 +8,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 
 ---
 
-## 📂 Dataset
+## Dataset
 
 - Source: [Mobile Price Classification on Kaggle](https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification)
 - Files:
