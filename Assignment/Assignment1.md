@@ -134,7 +134,7 @@ class MobilePriceDataset(Dataset):
 
 # 3. MLP model
 class MLPClassifier(nn.Module):
-   # TODO: Here I built a very simple MLP, you may want to build your own model.
+   # TODO: Here I built a very simple MLP, you need to build your own model.
 
     def __init__(self, input_dim, hidden_dims=[64, 32], output_dim=4):
         super(MLPClassifier, self).__init__()
