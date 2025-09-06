@@ -1,5 +1,5 @@
 # 2025 Fall CPSCI-366
-
+![image](example_data/Gemini_Generated_Image_iojlaniojlaniojl.png)
 ## Lecture Details
 
 **Lecture time**: Tuesday and Thursday 1:00 PM - 2:15 PM
