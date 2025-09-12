@@ -19,11 +19,12 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 ---
 
 ## Rules
-
+- **Team work, 2 students in one team.**
 - **DO NOT use `test.csv` for training, validation, feature selection, or scaling**.
 - Only use `train.csv` during development.
 - We will evaluate your model using `test.csv` and rank performance separately.
 - You may consult Kaggle notebooks and blogs to explore ideas, but you **must cite all external resources**.
+- **Extra credits**: The team achieves the lowest test loss will get addition 1 credit for Assignment 1.
 
 ---
 
@@ -35,7 +36,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 - Perform basic EDA (distribution plots, correlations, etc.).
 
 ### 2. Preprocess the Data
-- Normalize or standardize features.
+- Normalize or standardize features(if you think they can benefit your model).
 - You may engineer new features or apply dimensionality reduction.
 - Use only `train.csv` for all preprocessing steps.
 
@@ -53,7 +54,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 ### 5. Evaluation
 - Report classification accuracy.
 - Optionally include confusion matrix, F1-score, etc.
-- **Draw a learning curve**: accuracy (or loss) vs. epoch.
+- **Draw a learning curve**: accuracy (and loss) vs. epoch.
 
 ### 6. Final Prediction
 - Include a function:
@@ -77,7 +78,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 
 * Final prediction function
 
-7.2. Brief report (.pdf) summarizing:
+7.2. Brief report (.pdf) summarizing (up to two pages, I will not grade your report based on the number of pages):
 
 * Your model architecture and training setup
 
@@ -87,7 +88,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 
 * External resources used (with links or citations)
 
-* Trained model weights (.pt)
+7.3. Trained model weights (.pt)
 
 ### Grading Criteria (100 pts)
 ## 🏁 Grading Criteria (100 pts)
@@ -118,7 +119,7 @@ from sklearn.preprocessing import StandardScaler
 def load_data(path):
     df = pd.read_csv(path)
     return df
-# TODO: Procress df here.
+# TODO: Feature engineerig.
 
 # 2. Dataset class
 class MobilePriceDataset(Dataset):
