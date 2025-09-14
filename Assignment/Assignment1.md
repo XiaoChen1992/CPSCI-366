@@ -57,13 +57,15 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 - **Draw a learning curve**: accuracy (and loss) vs. epoch.
 
 ### 6. Final Prediction
-- Include a function:
+- Include a function that:
   ```python
-  def predict(model, X_test):
-      # Applied the exacty same data preprocessing pipeline for raw X_test to get X_test
-      # returns numpy array of predicted labels
-      return model.predict(X_test)
-   ```
+  def predict(model, X_test_loader, device):
+      # Evaluate model on test data
+      # Return accuracy and other classification metrics
+      # TODO: Implement comprehensive evaluation
+  ```
+- Apply the same preprocessing pipeline to test data
+- Report accuracy, precision, recall, F1-score
 
 ### 7. What to Submit
 7.1. Jupyter notebook (.ipynb):
@@ -114,15 +116,23 @@ from torch import nn
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import classification_report, confusion_matrix # TODO: learn how to use these two functions
+import matplotlib.pyplot as plt
 
 # 1. Load data
 def load_data(path):
     df = pd.read_csv(path)
     return df
-# TODO: Feature engineerig.
+
+def feature_processing(df):
+    # TODO: Feature engineerig.
+    return new_df
 
 # 2. Dataset class
 class MobilePriceDataset(Dataset):
+    """
+    You can directly use this function, we will discuss more about this function in Assignment 2.
+    """
     def __init__(self, X, y):
         self.X = torch.tensor(X.values, dtype=torch.float32)
         self.y = torch.tensor(y.values, dtype=torch.long)
@@ -144,7 +154,7 @@ class MLPClassifier(nn.Module):
             nn.ReLU(),
             nn.Linear(hidden_dims[0], hidden_dims[1]),
             nn.ReLU(),
-            nn.Linear(hidden_dims[1], output_dim)
+            nn.Linear(hidden_dims[1], output_dim) # Do not apply softmax here!!!
         )
 
     def forward(self, x):
@@ -154,12 +164,14 @@ class MLPClassifier(nn.Module):
 def main():
     # Load training data
     df = load_data("train.csv")
+    df = feature_processing(df)
 
     # Split features and labels
     X = df.drop("price_range", axis=1)
     y = df["price_range"]
 
     # Preprocessing (e.g., scaling) — add later
+    
     scaler = StandardScaler()  # TODO: You need to read sklearn document. 
     # https://scikit-learn.org/stable/data_transforms.html
     X_scaled = scaler.fit_transform(X)
@@ -180,11 +192,178 @@ def main():
 
     # Move model to device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = model.to(device)
+    # For Mac M-series chips, you can also try:
+    # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    print(f"Using device: {device}")
 
-    # TODO: Add training loop, validation, evaluation, learning curve, etc.
+    # Here is a basic traning loop
+    # Training setup
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=10, factor=0.5)
+    
+    # Training parameters
+    num_epochs = 100 # You can change this number
+
+    # The following three lines are related to early stop
+    early_stop_patience = 15 #TODO: Apply early stop for your model
+    best_val_loss = float('inf')
+    patience_counter = 0
+    #########################################################
+    
+    # Lists to store metrics for learning curves
+    train_losses = []
+    val_losses = []
+    train_accuracies = []
+    val_accuracies = []
+    
+    print(f"Training on device: {device}")
+    print(f"Model has {sum(p.numel() for p in model.parameters())} parameters")
+    
+    # Training loop
+    for epoch in range(num_epochs):
+        # Training phase
+        model.train()
+        train_loss = 0.0
+        train_correct = 0
+        train_total = 0
+        
+        for batch_idx, (data, target) in enumerate(train_loader):
+            data, target = data.to(device), target.to(device) # move data to gpu
+            
+            # Zero gradients before every batch
+            optimizer.zero_grad()
+            
+            # Forward pass
+            outputs = model(data)
+            loss = criterion(outputs, target)
+            
+            # Backward pass
+            loss.backward()
+            optimizer.step()
+            
+            # Statistics
+            train_loss += loss.item()
+            _, predicted = torch.max(outputs.data, 1)
+            train_total += target.size(0)
+            train_correct += (predicted == target).sum().item()
+        
+        # Calculate training metrics
+        avg_train_loss = train_loss / len(train_loader)
+        train_accuracy = 100 * train_correct / train_total
+        
+        # Validation phase
+        model.eval()
+        val_loss = 0.0
+        val_correct = 0
+        val_total = 0
+        
+        with torch.no_grad():
+            for data, target in val_loader:
+                data, target = data.to(device), target.to(device)
+                outputs = model(data)
+                loss = criterion(outputs, target)
+                
+                val_loss += loss.item()
+                _, predicted = torch.max(outputs.data, 1) # covert proability to 0/1 label
+                val_total += target.size(0)
+                val_correct += (predicted == target).sum().item()
+        
+        # Calculate validation metrics
+        avg_val_loss = val_loss / len(val_loader)
+        val_accuracy = 100 * val_correct / val_total
+        
+        # Store metrics for learning curves
+        train_losses.append(avg_train_loss)
+        val_losses.append(avg_val_loss)
+        train_accuracies.append(train_accuracy)
+        val_accuracies.append(val_accuracy)
+        
+        # TODO: Learning rate scheduling
+        
+        
+        # Print progress
+        if (epoch + 1) % 10 == 0 or epoch == 0:
+            print(f'Epoch [{epoch+1}/{num_epochs}]')
+            print(f'Train Loss: {avg_train_loss:.4f}, Train Acc: {train_accuracy:.2f}%')
+            print(f'Val Loss: {avg_val_loss:.4f}, Val Acc: {val_accuracy:.2f}%')
+            print(f'LR: {optimizer.param_groups[0]["lr"]:.6f}')
+            print('-' * 50)
+
+        # TODO: Early stopping
+
+        # TODO: save best model
+        # uncomment the following line after you apply early stopping
+        # model.save(model.state_dict(), 'you_path/best_model.pt')
+    
+    plot_learning_curves(train_losses, val_losses, train_accuracies, val_accuracies)
+    
+    return model, scaler
+
+
+def plot_learning_curves(train_losses, val_losses, train_accuracies, val_accuracies):
+    # TODO: Use this function to plot learning curve
+    """Plot learning curves for loss and accuracy"""
+    import matplotlib.pyplot as plt
+    
+    epochs = range(1, len(train_losses) + 1)
+    
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    
+    # Plot losses
+    ax1.plot(epochs, train_losses, 'b-', label='Training Loss', linewidth=2)
+    ax1.plot(epochs, val_losses, 'r-', label='Validation Loss', linewidth=2)
+    ax1.set_title('Training and Validation Loss', fontsize=14, fontweight='bold')
+    ax1.set_xlabel('Epoch', fontsize=12)
+    ax1.set_ylabel('Loss', fontsize=12)
+    ax1.legend(fontsize=12)
+    ax1.grid(True, alpha=0.3)
+    
+    # Plot accuracies
+    ax2.plot(epochs, train_accuracies, 'b-', label='Training Accuracy', linewidth=2)
+    ax2.plot(epochs, val_accuracies, 'r-', label='Validation Accuracy', linewidth=2)
+    ax2.set_title('Training and Validation Accuracy', fontsize=14, fontweight='bold')
+    ax2.set_xlabel('Epoch', fontsize=12)
+    ax2.set_ylabel('Accuracy (%)', fontsize=12)
+    ax2.legend(fontsize=12)
+    ax2.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.show()
+
 
 if __name__ == "__main__":
-    main()
-    # TODO: save model's weights (.pt)
+    model, scaler = main()
+
+    # load the bset model
+    model.load_state_dict(torch.load('your_path/best_model.pt'))
+    
+    def predict(model, X_test_loader, device):
+        """
+        Evaluate model on test data and return comprehensive metrics
+        """
+        model.eval()
+        correct = 0
+        total = 0
+        all_predictions = []
+        all_targets = []
+        
+        with torch.no_grad():
+            for data, target in X_test_loader:
+                data, target = data.to(device), target.to(device)
+                outputs = model(data)
+                _, predicted = torch.max(outputs.data, 1)
+                total += target.size(0)
+                correct += (predicted == target).sum().item()
+                
+                all_predictions.extend(predicted.cpu().numpy())
+                all_targets.extend(target.cpu().numpy())
+        
+        accuracy = 100 * correct / total
+        
+        # TODO: Add more evaluation metrics
+        # Hint: Use classification_report, confusion_matrix from sklearn.metrics
+        # Print or return precision, recall, F1-score for each class
+        
+        return accuracy
 ```
