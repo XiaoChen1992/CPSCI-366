@@ -196,6 +196,8 @@ def main():
     # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     print(f"Using device: {device}")
 
+    model = model.to(device)
+
     # Here is a basic traning loop
     # Training setup
     criterion = nn.CrossEntropyLoss()
