@@ -4,7 +4,7 @@
 
 In this assignment, you will build a **Multi-Layer Perceptron (MLP)** to predict the price range of mobile phones based on their hardware specifications. You will work with a structured dataset containing various phone features such as RAM, battery power, screen size, and more.
 
-Your goal is to **train and evaluate a deep learning model using only the `train.csv` data**, and to explore preprocessing techniques, model training strategies, and performance evaluation using suitable metrics.
+Your goal is to **train, evaluate and test a deep learning model using only the `train.csv` data**, and to explore preprocessing techniques, model training strategies, and performance evaluation using suitable metrics.
 
 ---
 
@@ -13,7 +13,6 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 - Source: [Mobile Price Classification on Kaggle](https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification)
 - Files:
   - `train.csv`: 2000 samples with 20 features + `price_range` label (0–3)
-  - `test.csv`: 1000 samples, same features, no labels (used only for final ranking)
 - Target variable: `price_range` (0: low cost, 1: medium cost, 2: high cost, 3: very high cost)
 
 ---
@@ -22,9 +21,8 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 - **Team work, 2 students in one team.**
 - **DO NOT use `test.csv` for training, validation, feature selection, or scaling**.
 - Only use `train.csv` during development.
-- We will evaluate your model using `test.csv` and rank performance separately.
+- Use the train_test_split function I provded in start code to generate train and validation data, and evaluate your model's performance on it.
 - You may consult Kaggle notebooks and blogs to explore ideas, but you **must cite all external resources**.
-- **Extra credits**: The team achieves the lowest test loss will get addition 1 credit for Assignment 1.
 
 ---
 
@@ -38,22 +36,20 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 ### 2. Preprocess the Data
 - Normalize or standardize features(if you think they can benefit your model).
 - You may engineer new features or apply dimensionality reduction.
-- Use only `train.csv` for all preprocessing steps.
 
 ### 3. Build an MLP Model
 - Implement a feedforward neural network using PyTorch.
-- Use at least 2 hidden layers and ReLU activation.
+- Use at least 2 hidden layers and activations.
 - Output layer must have 4 units and use softmax (via `CrossEntropyLoss`).
 - Use dropout, batch norm, and weight initialization as needed.
 
 ### 4. Train and Validate
-- Split the training data into train/validation sets (e.g., 80/20).
+- Use the provided start code to split train.csv to train, val and test set.
 - Use early stopping, learning rate scheduling, and other best practices.
 - Track training and validation accuracy and loss.
 
 ### 5. Evaluation
-- Report classification accuracy.
-- Optionally include confusion matrix, F1-score, etc.
+- Report classification accuracy, confusion matrix, F1-score or other useful metrics.
 - **Draw a learning curve**: accuracy (and loss) vs. epoch.
 
 ### 6. Final Prediction
@@ -65,7 +61,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
       # TODO: Implement comprehensive evaluation
   ```
 - Apply the same preprocessing pipeline to test data
-- Report accuracy, precision, recall, F1-score
+- Submit your final result to 
 
 ### 7. What to Submit
 7.1. Jupyter notebook (.ipynb):
@@ -93,7 +89,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 7.3. Trained model weights (.pt)
 
 ### Grading Criteria (100 pts)
-## 🏁 Grading Criteria (100 pts)
+## Grading Criteria (100 pts)
 
 | Component                         | Points |
 |----------------------------------|--------|
@@ -107,7 +103,7 @@ Your goal is to **train and evaluate a deep learning model using only the `train
 
 ```python
 """
-NOTE: This is example code to show you how to orgnize the project. This code does not contain feature propressing.
+NOTE: This is example code to show you how to organize the project. This code does not contain feature preprocessing.
 """
 import pandas as pd
 import numpy as np
@@ -125,8 +121,8 @@ def load_data(path):
     return df
 
 def feature_processing(df):
-    # TODO: Feature engineerig.
-    return new_df
+    # TODO: Feature engineering.
+    return df
 
 # 2. Dataset class
 class MobilePriceDataset(Dataset):
@@ -164,6 +160,10 @@ class MLPClassifier(nn.Module):
 def main():
     # Load training data
     df = load_data("train.csv")
+    # split data, train_df is your train data.
+    df, test_df = train_test_split(df, test_size=0.15, random_state=1)
+
+
     df = feature_processing(df)
 
     # Split features and labels
@@ -177,8 +177,10 @@ def main():
     X_scaled = scaler.fit_transform(X)
     X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
-    # Train/val split
-    X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+    # TODO: Train/val split
+    # X_train, X_test, y_train, y_test 
+    # https://scikit-learn.org/0.19/modules/generated/sklearn.model_selection.train_test_split.html
+    
 
     # Prepare datasets and loaders
     train_dataset = MobilePriceDataset(X_train, y_train)
@@ -198,10 +200,10 @@ def main():
 
     model = model.to(device)
 
-    # Here is a basic traning loop
+    # Here is a basic training loop
     # Training setup
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001) # You can play with different optimizer
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=10, factor=0.5)
     
     # Training parameters
@@ -267,7 +269,7 @@ def main():
                 loss = criterion(outputs, target)
                 
                 val_loss += loss.item()
-                _, predicted = torch.max(outputs.data, 1) # covert proability to 0/1 label
+                _, predicted = torch.max(outputs.data, 1) # convert proability to 0/1 label
                 val_total += target.size(0)
                 val_correct += (predicted == target).sum().item()
         
@@ -296,7 +298,7 @@ def main():
 
         # TODO: save best model
         # uncomment the following line after you apply early stopping
-        # model.save(model.state_dict(), 'you_path/best_model.pt')
+        # torch.save(model.state_dict(), 'you_path/best_model.pt')
     
     plot_learning_curves(train_losses, val_losses, train_accuracies, val_accuracies)
     
@@ -337,7 +339,7 @@ def plot_learning_curves(train_losses, val_losses, train_accuracies, val_accurac
 if __name__ == "__main__":
     model, scaler = main()
 
-    # load the bset model
+    # load the best model
     model.load_state_dict(torch.load('your_path/best_model.pt'))
     
     def predict(model, X_test_loader, device):
@@ -351,8 +353,8 @@ if __name__ == "__main__":
         all_targets = []
         
         with torch.no_grad():
-            for data, target in X_test_loader:
-                data, target = data.to(device), target.to(device)
+            for data in X_test_loader:
+                data = data.to(device)
                 outputs = model(data)
                 _, predicted = torch.max(outputs.data, 1)
                 total += target.size(0)
