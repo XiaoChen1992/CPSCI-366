@@ -178,7 +178,7 @@ def main():
     X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
     # TODO: Train/val split
-    # X_train, X_test, y_train, y_test 
+    # X_train, X_val, y_train, y_val
     # https://scikit-learn.org/0.19/modules/generated/sklearn.model_selection.train_test_split.html
     
 
