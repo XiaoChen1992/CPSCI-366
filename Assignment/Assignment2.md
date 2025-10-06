@@ -1,6 +1,6 @@
 # Assignment 2 — Semantic Segmentation with UNet++ (PyTorch Lightning) on Oxford‑IIIT Pet
 
-**Deadline:** 2025-10-21 1:00 PM 
+**Deadline:** 2025-10-28 1:00 PM (before the class) 
 
 
 ---
@@ -12,7 +12,9 @@
 - Produce qualitative results: show input, GT mask (colorized), and prediction overlays.
 - Try at least **two improvements** and analyze their effect.
 
-> You **must** use **PyTorch Lightning** for the training loop (trainer, callbacks, logging).
+* You **must** use **PyTorch Lightning** for the training loop (trainer, callbacks, logging). 
+* I do encourage you use **PyTorch Lightning DataModule** for data loading and preprocessing.
+* **TorchMetrics** is optional but recommended for metrics.
 
 ---
 
@@ -40,7 +42,7 @@ oxford-iiit-pet/
 ```
 **What each file/folder is for**
 - `images/`: All RGB JPEG images, filenames match masks (same basename).
-- `annotations/trimaps/`: **Segmentation masks**; you will convert to 3‑class or 2‑class IDs.
+- `annotations/trimaps/`: **Segmentation masks**; you will convert to 3‑class.
 - `annotations/xmls/`: Detection/classification XMLs (**not used** for this assignment).
 - `annotations/list.txt`: Global list with per‑image metadata.
 - `annotations/trainval.txt` and `annotations/test.txt`: Official splits. You must further split **train/val** from `trainval` (e.g., 80/20).
@@ -65,7 +67,7 @@ samples/
 ---
 
 ## 2) Rules
-- Work in **teams of two**.
+- Work in **teams**.
 - Use only the **trainval** split for model development; create your own **train/val** split (80/20 or 85/15). The official **test** split may be used for final reporting. I will give extra 1 points for winning team.
 - You may consult public materials, but your **code must be your own**. Cite any external sources you drew ideas from.
 - **PyTorch Lightning is required** for the training loop and logging.
@@ -75,7 +77,7 @@ samples/
 
 ## 3) Deliverables
 
-1. **Code** (repo or zip)
+1. **Code** (repo)
    - Lightning modules (DataModule + LightningModule)
    - Training script (using `pl.Trainer` with AMP, checkpointing, logging)
    - Evaluation script/notebook (metrics + figures)
@@ -94,18 +96,7 @@ samples/
 
 ---
 
-## 4) Baseline Configuration (fits in ≤10h on one RTS 5070 TI GPU)
-- **Model**: UNet++ with lightweight encoder  
-  `encoder_name = "timm-efficientnet-b0"` (or `"mobilenet_v2"`), `classes = 3` (trimap) or `2` (binary)
-- **Input**: `RandomResizedCrop(512, 512, scale=(0.5, 2.0))` + HorizontalFlip; **NEAREST** for mask interpolation
-- **Loss**:
-  - Trimap (3‑class): CrossEntropy (optional class weights) **+ Dice** (e.g., 0.5/0.5)
-- **Batch size**: 8 (reduce to 4/6 if OOM); **AMP** on
-- **Epochs**: 60–100 (you may stop early via early‑stopping callback)
-
----
-
-## 5) Project Structure
+## 4) Project Structure
 ```
 Assignment2/
   README.md
@@ -121,20 +112,20 @@ Assignment2/
     logs/
     samples/
 ```
-
+I **only** accepet the files I listed above. You need to edit you .gitignores file accordingly.
 ---
 
-## 6) How to run
+## 5) How to run
 - Install dependencies, explore dataset with `oxpet_download_and_viz_fixed.py`, train with `src/train.py`, evaluate and visualize results.
 
 ---
 
-## 7) Improvements
+## 6) Improvements
 Please ask AI to pick any two (augmentation, loss, backbone, TTA, optimization).
 
 ---
 
-## 8) Grading (100 pts)
+## 7) Grading (100 pts)
 | Component | Pts |
 |-----------|-----|
 | Data pipeline (correct masks & transforms) | 15 |
@@ -147,7 +138,7 @@ Please ask AI to pick any two (augmentation, loss, backbone, TTA, optimization).
 
 ---
 
-## 10) Checklist
+## 9) Checklist
 - Verified data with provided script  
 - Implemented Lightning Module  
 - Used NEAREST for mask interpolation  
