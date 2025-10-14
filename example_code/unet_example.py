@@ -6,23 +6,11 @@ A carefully commented, teaching-oriented implementation.
 Features
 - Classic U-Net (Ronneberger et al., 2015)
 
-Usage (quick sanity check)
---------------------------
->>> import torch
->>> model = UNet(in_channels=3, num_classes=2, base_channels=64, bilinear=True)
->>> x = torch.randn(1, 3, 256, 256)
->>> y = model(x)           # y.shape -> (1, 2, 256, 256)
-
->>> modelpp = UNetPP(in_channels=3, num_classes=2, base_channels=64, deep_supervision=False)
->>> ypp = modelpp(x)       # ypp.shape -> (1, 2, 256, 256)
-
-If deep_supervision=True, UNetPP returns a list of predictions at different depths.
 
 Notes
 -----
 * We use padding=1 for 3x3 convolutions so spatial sizes are preserved across convs.
 * Skip connections are concatenations along the channel dimension (dim=1).
-* For U-Net++, decoder nodes are densely connected within each level (nested skips).
 """
 from typing import List, Tuple, Optional, Union
 
