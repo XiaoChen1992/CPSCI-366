@@ -1,7 +1,6 @@
 """
 PyTorch U-Net and U-Net++
 -------------------------
-A carefully commented, teaching-oriented implementation.
 
 Features
 - Classic U-Net (Ronneberger et al., 2015)
