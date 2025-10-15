@@ -1,5 +1,5 @@
 """
-PyTorch U-Net and U-Net++
+PyTorch U-Net 
 -------------------------
 
 Features
