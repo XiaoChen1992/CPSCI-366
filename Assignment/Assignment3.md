@@ -4,6 +4,8 @@
 In this assignment, you will build a **sentiment classification model** using the **IMDB Movie Review Dataset** (50 000 labeled reviews).  
 Your goal is to classify each review as **positive** or **negative**.
 
+**Due** on 2025-11-21 11:59 PM.
+
 You must:
 - Implement a **Bidirectional LSTM (Bi-LSTM)** model (**no attention**)  
 - Use **PyTorch Lightning** for modular training  
