@@ -11,7 +11,7 @@ def _calculate_scores(q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
 
 def _scale_and_softmax(scores: torch.Tensor, d_k: int) -> torch.Tensor:
     # TODO: Implement scaling and Softmax
-    pass
+    return nn.functional.softmax(scores / d_k**0.5, dim=-1)
 
 
 def _weighted_sum(attn_weights: torch.Tensor, v: torch.Tensor) -> torch.Tensor:
@@ -23,7 +23,7 @@ def _weighted_sum(attn_weights: torch.Tensor, v: torch.Tensor) -> torch.Tensor:
     """
     # Batch matrix multiplication: (..., S, S) @ (..., S, d_v) -> (..., S, d_v)
     # TODO: Implement the batch matrix multiplication
-    pass
+    return attn_weights.matmul(v)
 
 
 # ====================================================================
@@ -40,9 +40,9 @@ class SelfAttention(nn.Module):
         
         # Linear projections for Q, K, V (all map embed_dim to embed_dim)
         # TODO: Define the linear layers W_q, W_k, W_v
-        self.W_q = NotImplemented
-        self.W_k = NotImplemented
-        self.W_v = NotImplemented
+        self.W_q = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_k = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_v = nn.Linear(embed_dim, embed_dim, bias=False)
         
         # d_k is the dimension of the Key vectors
         self.d_k = embed_dim 
@@ -54,13 +54,13 @@ class SelfAttention(nn.Module):
         v = self.W_v(x)
         
         # 2. Calculate Attention Scores: (B, S, S)
-        scores = NotImplemented
+        scores = _calculate_scores(q, k)
         
         # 3. Scaling and Softmax: (B, S, S)
-        attn_weights = NotImplemented
+        attn_weights = _scale_and_softmax(scores, self.d_k)
         
         # 4. Weighted Sum: (B, S, D_embed)
-        output = NotImplemented
+        output = _weighted_sum(attn_weights, v)
         
         return output   
 
@@ -103,10 +103,10 @@ def _split_heads(x: torch.Tensor, num_heads: int) -> torch.Tensor:
     d_k = D_model // num_heads
     
     # 1. Reshape: (B, S, D_model) -> (B, S, H, d_k)
-    x_reshaped = NotImplemented
+    x_reshaped = x.view(B, S, num_heads,d_k)
     
     # 2. Transpose: (B, S, H, d_k) -> (B, H, S, d_k)
-    x_split = NotImplemented
+    x_split = x_reshaped.transpose(1, 2)
     
     return x_split
 
@@ -119,10 +119,10 @@ def _combine_heads(x_split: torch.Tensor) -> torch.Tensor:
     D_model = H * d_k
     
     # 1. Transpose back: (B, H, S, d_k) -> (B, S, H, d_k)
-    x_transposed = NotImplemented
+    x_transposed = x_split.transpose(1, 2)
     
     # 2. Reshape/Combine: (B, S, H, d_k) -> (B, S, D_model)
-    x_combined = NotImplemented
+    x_combined = x_transposed.contiguous().view(B, S, D_model)
     
     return x_combined
 
@@ -143,12 +143,12 @@ class MultiHeadSelfAttention(nn.Module):
         self.d_k = embed_dim // num_heads # Dimension of each head
 
         # Initial Projections (maps D_model to D_model)
-        self.W_q = NotImplemented
-        self.W_k = NotImplemented
-        self.W_v = NotImplemented
+        self.W_q = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_k = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_v = nn.Linear(embed_dim, embed_dim, bias=False)
         
         # Final Projection (maps combined D_model back to D_model)
-        self.W_out = NotImplemented
+        self.W_out = nn.Linear(embed_dim, embed_dim, bias=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         B, S, D_model = x.shape
@@ -167,19 +167,19 @@ class MultiHeadSelfAttention(nn.Module):
         # 3. Parallel Attention Calculation
         
         # Scores: (B, H, S, S)
-        scores = NotImplemented
+        scores = _calculate_scores(q, k)
         
         # Attention Weights: (B, H, S, S)
-        attn_weights = NotImplemented
+        attn_weights = _scale_and_softmax(scores, self.d_k)
         
         # Weighted Sum (Output per head): (B, H, S, d_k)
-        attn_output_split = NotImplemented
+        attn_output_split = _weighted_sum(attn_weights, v)
         
         # 4. Combining Heads: (B, H, S, d_k) -> (B, S, D_model)
-        attn_output_combined = NotImplemented
+        attn_output_combined = _combine_heads(attn_output_split)
         
         # 5. Final Linear Projection: (B, S, D_model)
-        output = NotImplemented
+        output = self.W_out(attn_output_combined)
         
         return output
     
