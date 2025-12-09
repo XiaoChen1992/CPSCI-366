@@ -6,8 +6,7 @@ import torch
 # ====================================================================
 def _calculate_scores(q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
     # TODO: Implement Q * K^T
-    k_t = k.transpose(-2, -1)
-    return q.matmul(k_t)
+    pass
 
 def _scale_and_softmax(scores: torch.Tensor, d_k: int) -> torch.Tensor:
     # TODO: Implement scaling and Softmax
@@ -64,31 +63,6 @@ class SelfAttention(nn.Module):
         
         return output   
 
-
-
-def test_calculate_scores():
-    """Test Q * K^T computation."""
-    print("Testing _calculate_scores...")
-    
-    # Test case 1: Simple 2D case
-    q = torch.tensor([[1.0, 2.0], [3.0, 4.0]])  # (2, 2)
-    k = torch.tensor([[1.0, 0.0], [0.0, 1.0]])  # (2, 2)
-    scores = _calculate_scores(q, k)
-    expected = torch.tensor([[1.0, 2.0], [3.0, 4.0]])  # Q @ K^T
-    assert scores.shape == expected.shape, f"Shape mismatch: {scores.shape} vs {expected.shape}"
-    assert torch.allclose(scores, expected, atol=1e-5), "Values don't match expected Q*K^T"
-    
-    # Test case 2: Batch case
-    q = torch.randn(4, 10, 64)  # (B=4, S=10, D=64)
-    k = torch.randn(4, 10, 64)
-    scores = _calculate_scores(q, k)
-    assert scores.shape == (4, 10, 10), f"Expected (4, 10, 10), got {scores.shape}"
-    
-    # Manual verification for one batch
-    manual_scores = q[0] @ k[0].T
-    assert torch.allclose(scores[0], manual_scores, atol=1e-5), "Batch computation incorrect"
-    
-    print("✓ _calculate_scores passed!")
 
 # ====================================================================
 # MULTI-HEAD UTILITY FUNCTIONS
