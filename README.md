@@ -136,16 +136,16 @@ Your final score will be a weighted sum of all three parts. The final score will
 | Score | Letter Grade |
 | ----- | ------------ |
 | >=93  | A            |
-| 90~93 | A-           |
-| 87~89 | B+           |
-| 84~86 | B            |
-| 80~83 | B-           |
-| 77~79 | C+           |
-| 74~76 | C            |
-| 70~73 | C-           |
-| 67~69 | D+           |
-| 64~66 | D            |
-| 60~63 | D-           |
+| [90~93) | A-           |
+| [87~90) | B+           |
+| [84~87) | B            |
+| [80~84) | B-           |
+| [77~80) | C+           |
+| [74~77) | C            |
+| [70~74) | C-           |
+| [67~70) | D+           |
+| [64~67) | D            |
+| [60~64) | D-           |
 | <60   | F            |
 
 ## Attendance and Late Work Policy
